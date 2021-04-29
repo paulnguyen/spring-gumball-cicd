@@ -33,6 +33,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+   # Downdload Last Build Artifacct
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.0.9
+      with:
+        name: spring-gumball
+        path: build/libs/spring-gumball-2.0.jar
+
     # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
