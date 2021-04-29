@@ -40,6 +40,9 @@ jobs:
         name: spring-gumball
         path: build/libs/spring-gumball-2.0.jar
 
+    - name: Build Result
+      run: ls build/libs
+
     # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
