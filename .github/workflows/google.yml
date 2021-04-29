@@ -33,13 +33,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-   # Downdload Last Build Artifacct
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v2.0.9
+    # Build JAR File
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
       with:
-        name: spring-gumball
-        path: build/libs/spring-gumball-2.0.jar
-
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Build with Gradle
+      run: ./gradlew build
     - name: Build Result
       run: ls build/libs
 
