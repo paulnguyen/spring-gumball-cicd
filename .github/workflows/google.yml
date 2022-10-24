@@ -16,9 +16,9 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cmpe172    # TODO: update to cluster name
-  GKE_ZONE: us-central1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: spring-gumball # TODO: update to deployment name
+  GKE_CLUSTER: cmpe172    
+  GKE_ZONE: us-central1-c   
+  DEPLOYMENT_NAME: spring-gumball 
   IMAGE: spring-gumball
 
 jobs:
