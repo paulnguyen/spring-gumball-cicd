@@ -113,6 +113,109 @@ Make a change to the code and commit to main branch to trigger the action. Take 
 
 
 
+## CD Workflow (Part 2)
+
+* https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-google-kubernetes-engineLinks to an external site.
+* https://cloud.google.com/iam/docs/creating-managing-service-accountsLinks to an external site.
+* https://kustomize.io
+
+![](./images/10-deploying-to-google-kubernetes-engine.png)
+
+
+### Deploying to Google Kubernetes Engine
+
+#### Introduction
+
+This guide explains how to use GitHub Actions to build a containerized application, push it to Google Container Registry (GCR), and deploy it to Google Kubernetes Engine (GKE) when there is a push to the **main** branch.
+
+GKE is a managed Kubernetes cluster service from Google Cloud that can host your containerized workloads in the cloud or in your own datacenter. For more information, see [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).
+
+Note: If your GitHub Actions workflows need to access resources from a cloud provider that supports OpenID Connect (OIDC), you can configure your workflows to authenticate directly to the cloud provider. This will let you stop storing these credentials as long-lived secrets and provide other security benefits. For more information, see "[About security hardening with OpenID Connect](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect)"
+
+#### Prerequisites
+
+Before you proceed with creating the workflow, you will need to complete the following steps for your Kubernetes project. This guide assumes the root of your project already has a **Dockerfile** and a Kubernetes Deployment configuration file. For an example, see [google-github-actions](https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke).
+
+ 
+#### Creating a GKE cluster
+
+
+##### Create the GKE cluster on GCP with the following paramters:
+
+```
+GCP Project:      cmpe172
+GKE Cluster Name: cmpe172
+GKE Cluster Zone: us-central1-c
+```
+
+* Create as **Standard: You manage your cluster**.
+
+![](./images/11-create-standard-gke-cluster-part-1.png)
+![](./images/11-create-standard-gke-cluster-part-2.png)
+![](./images/11-create-standard-gke-cluster-part-3.png)
+
+##### Enabling the APIs
+
+* https://cloud.google.com/endpoints/docs/openapi/enable-api 
+* https://cloud.google.com/kubernetes-engine/docs/how-to/iam
+
+Enable the Kubernetes Engine and Container Registry APIs. 
+
+* In the Google Cloud console, go to APIs & services for your project.
+	* [Go to APIs & Services](https://console.cloud.google.com/apis)
+	
+* On the **Library page**, click **Private APIs**. If you don't see the API listed, that means you haven't been granted access to enable the API.
+
+* Click the API you want to enable. If you need help finding the API, use the search field.  In the page that displays information about the API, click Enable.
+
+
+![](./images/12-list-of-private-apis-enabled.png)
+
+* [Enable the Google Kubernetes Engine API](https://console.cloud.google.com/flows/enableapi?apiid=container.googleapis.com&_ga=2.135293809.1983438020.1666576943-332455251.1645430161).
+
+![](./images/13-enable-kubernetes-engine-api-part-1.png)
+![](./images/13-enable-kubernetes-engine-api-part-2.png)
+![](./images/13-enable-kubernetes-engine-api-part-3.png)
+
+##### Set up Secrets in your Workspace 
+
+Example:
+
+*  https://github.com/google-github-actions/setup-gcloud/tree/main/example-workflows/gke
+
+```
+GCP Project:      cmpe172
+GKE Cluster Name: cmpe172
+GKE Cluster Zone: us-central1-c
+
+GKE_PROJECT:      cmpe172-360119
+SA_NAME:          spring-gumball	
+SA_EMAIL:         spring-gumball@cmpe172-360119.iam.gserviceaccount.com
+GKE_SA_KEY:       <export json>
+```
+
+Find your GKE Project ID
+
+* Navigate to Cloud Overview / Dashboard
+
+![](./images/14-find-project-id-part-1.png)
+		
+* Note the "Project ID" in upper left Project Info section. 
+   
+![](./images/14-find-project-id-part-2.png)
+
+
+
+	
+
+
+
+
+
+
+
+
+
 
 
 
