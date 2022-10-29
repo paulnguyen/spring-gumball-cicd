@@ -115,8 +115,8 @@ Make a change to the code and commit to main branch to trigger the action. Take 
 
 ## CD Workflow (Part 2)
 
-* https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-google-kubernetes-engineLinks to an external site.
-* https://cloud.google.com/iam/docs/creating-managing-service-accountsLinks to an external site.
+* https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-google-kubernetes-engine
+* https://cloud.google.com/iam/docs/creating-managing-service-accounts
 * https://kustomize.io
 
 ![](./images/10-deploying-to-google-kubernetes-engine.png)
@@ -157,7 +157,6 @@ GKE Cluster Zone: us-central1-c
 ##### Enabling the APIs
 
 * https://cloud.google.com/endpoints/docs/openapi/enable-api 
-* https://cloud.google.com/kubernetes-engine/docs/how-to/iam
 
 Enable the Kubernetes Engine and Container Registry APIs. 
 
@@ -204,6 +203,9 @@ Find your GKE Project ID
    
 ![](./images/14-find-project-id-part-2.png)
 
+
+
+* https://cloud.google.com/kubernetes-engine/docs/how-to/iam
 
 
 	
