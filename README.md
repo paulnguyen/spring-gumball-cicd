@@ -170,7 +170,7 @@ Enable the Kubernetes Engine and Container Registry APIs.
 
 ![](./images/12-list-of-private-apis-enabled.png)
 
-* [Enable the Google Kubernetes Engine API](https://console.cloud.google.com/flows/enableapi?apiid=container.googleapis.com&_ga=2.135293809.1983438020.1666576943-332455251.1645430161).
+* [Enable the Google Kubernetes Engine API](https://console.cloud.google.com/flows/enableapi?apiid=containerregistry.googleapis.com,container.googleapis.com).
 
 ![](./images/13-enable-kubernetes-engine-api-part-1.png)
 ![](./images/13-enable-kubernetes-engine-api-part-2.png)
@@ -203,7 +203,13 @@ Find your GKE Project ID
    
 ![](./images/14-find-project-id-part-2.png)
 
+* Alternatively, you can use the Google Cloud CLI
 
+```
+gcloud config get project
+```
+
+##### Create a Service Account for GitHub Access
 
 * https://cloud.google.com/kubernetes-engine/docs/how-to/iam
 
