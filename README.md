@@ -383,7 +383,7 @@ jobs:
 ```
 
 
-File: **.kustomization.yml**
+File: **kustomization.yml**
 
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -393,7 +393,7 @@ resources:
 - service.yaml
 ```
 
-File: **.deployment.yml**
+File: **deployment.yml**
 
 ```
 apiVersion: apps/v1
@@ -420,7 +420,7 @@ spec:
         - containerPort: 8080
 ```
 
-File: **.service.yml**
+File: **service.yml**
 
 ```
 apiVersion: v1
