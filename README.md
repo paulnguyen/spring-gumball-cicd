@@ -382,6 +382,62 @@ jobs:
         #kubectl get services -o wide
 ```
 
+
+File: **.kustomization.yml**
+
+```
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+```
+
+File: **.deployment.yml**
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-gumball-deployment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: spring-gumball
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        name: spring-gumball
+    spec:
+      containers:
+      - name: spring-gumball
+        image: gcr.io/PROJECT_ID/IMAGE:TAG
+        ports:
+        - containerPort: 8080
+```
+
+File: **.service.yml**
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-gumball-service 
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080 
+  selector:
+    name: spring-gumball
+```
+
+
 #### Trigger and Deployment to GKE
 
 * Trigger a CD Deployment by creating a new GitHub Release
