@@ -189,7 +189,7 @@ Find your GKE Project ID
    
 ![](./images/14-find-project-id-part-2.png)
 
-* Alternatively, you can use the Google Cloud CLI
+* Alternatively, you can use the [Google Cloud CLI](https://cloud.google.com/sdk/gcloud)
 
 ```
 gcloud config get project
